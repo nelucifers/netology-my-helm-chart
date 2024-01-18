@@ -1,0 +1,39 @@
+backend:
+  replicas: 1
+  name: app-backend
+  labels:
+    app: backend
+  spec:
+    labels:
+      app: backend
+  containers:
+    name: multitool
+    image: wbitt/network-multitool
+  ports:
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  path: /
+
+frontend:
+  replicas: 3
+  name: app-frontend
+  labels:
+    app: frontend
+  spec:
+    labels:
+      app: frontend
+  containers:
+    name: nginx
+    image: nginx
+  ports:
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  path: /api
+
+ingress:
+  name: http-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  host: myapp-netology.com

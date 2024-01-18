@@ -1,0 +1,7 @@
+Get the application URL by running these commands:
+{{- with .Values }}
+  App backend -
+  http://{{ .ingress.host }}:{{ .backend.ports.port }}{{ .backend.path }}
+  App frontend -
+  http://{{ .ingress.host }}:{{ .frontend.ports.port }}{{ .frontend.path }}
+{{- end }}

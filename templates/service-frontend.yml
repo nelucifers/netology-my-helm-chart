@@ -1,0 +1,14 @@
+{{- with .Values.frontend }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}
+spec:
+  ports:
+  - name: web-{{ .name }}
+    port: {{ .ports.port }}
+    protocol: {{ .ports.protocol }}
+    targetPort: {{ .ports.targetPort }}
+  selector:
+    {{- toYaml .labels | nindent 4 }}
+{{- end }}
