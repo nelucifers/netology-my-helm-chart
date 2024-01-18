@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- toYaml .labels | nindent 4 }}
 spec:
-  replicas: {{ .spec.replicas }}
+  replicas: {{ .replicas }}
   selector:
     matchLabels:
       {{- toYaml .spec.labels | nindent 6 }}
